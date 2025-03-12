@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cryptocurrency Price Tracker - Home</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+<header>
+    <h1>Cryptocurrency Price Tracker</h1>
+    <div>
+        <a href="/" class="active">Home</a>
+        <a href="/currencies">Currencies</a>
+    </div>
+</header>
+<section class="center-div">
+    <h1>Welcome to the Cryptocurrency Price Tracker!</h1>
+    <p>Check the current prices of popular cryptocurrencies:</p>
+</section>
+
+<section>
+    <ol>
+        {% for crypto in cryptocurrencies %}
+            <li><a href="/crypto/{{ crypto.name }}">{{ crypto.name }}</a></li>
+        {% endfor %}
+    </ol>
+</section>
+<footer>
+    <div class="footer-content">
+        <p>Created by <strong>Yousef Sherif Crypto Tracker</strong>. &copy; 2024 Yousef Sherif. All rights reserved.</p>
+    </div>
+</footer>
+
+</body>
+</html>

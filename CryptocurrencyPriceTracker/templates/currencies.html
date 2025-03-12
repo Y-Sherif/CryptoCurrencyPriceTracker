@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cryptocurrency Price Tracker - Currencies</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+<header>
+    <h1>Cryptocurrency Price Tracker</h1>
+    <div>
+        <a href="/">Home</a>
+        <a href="/currencies" class="active">Currencies</a>
+    </div>
+</header>
+<section class="center-div">
+    <h1>Cryptocurrencies</h1>
+</section>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Current Price</th>
+        <th>1d %</th>
+        <th>7d %</th>
+        <th>30d %</th>
+        <th>Market Cap</th>
+    </tr>
+    {% for crypto in cryptocurrencies %}
+        <tr onclick="window.location='/crypto/{{ crypto.crypto.name }}';">
+            <td><strong>{{ crypto.crypto.name }}</strong> {{ crypto.crypto.symbol }}</td>
+
+            <td>${{ "{:,.2f}".format(crypto.crypto.prices[-1]) }}</td>
+
+            <td id="percentageChange1Day-{{ crypto.crypto.name }}"
+                style="color: {% if crypto.percentage_change_1day.startswith('-') %}red{% elif crypto.percentage_change_1day.startswith('0') %}blue{% else %}green{% endif %};">
+                <strong>{{ crypto.percentage_change_1day }}</strong>
+            </td>
+
+            <td id="percentageChange7Days-{{ crypto.crypto.name }}"
+                style="color: {% if crypto.percentage_change_7days.startswith('-') %}red{% elif crypto.percentage_change_7days == '0%' %}blue{% else %}green{% endif %};">
+                <strong>{{ crypto.percentage_change_7days }}</strong>
+            </td>
+
+            <td id="percentageChange30Days-{{ crypto.crypto.name }}"
+                style="color: {% if crypto.percentage_change_30days.startswith('-') %}red{% elif crypto.percentage_change_30days.startswith('0') %}blue{% else %}green{% endif %};">
+                <strong>{{ crypto.percentage_change_30days }}</strong>
+            </td>
+
+            <td>${{ "{:,.2f}".format(crypto.crypto.market_cap) }}</td>
+        </tr>
+    {% endfor %}
+</table>
+
+<footer>
+    <div class="footer-content">
+        <p>Created by <strong>Yousef Sherif Crypto Tracker</strong>. &copy; 2024 Yousef Sherif. All rights reserved.</p>
+    </div>
+</footer>
+</body>
+</html>

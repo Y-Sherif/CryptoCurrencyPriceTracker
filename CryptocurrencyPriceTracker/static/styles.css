@@ -1,0 +1,125 @@
+body {
+    --hover-color: #6665;
+    --border-color: #6668;
+    --text-color: #666F;
+    --title-color: #333F;
+}
+
+body {
+    font-family: system-ui;
+    /*font-family: Arial, sans-serif;*/
+}
+
+section {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+h1, th, button {
+    color: var(--title-color);
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+header div a {
+    font-size: larger;
+    margin-left: 8px;
+    margin-right: 20px;
+}
+
+header div a.active {
+    font-weight: bold;
+    color: var(--title-color);
+    text-decoration: underline;
+}
+
+button {
+    font-size: large;
+    padding: 8px;
+    font-weight: bold;
+    border-width: 1px;
+    border-color: var(--hover-color);
+    border-radius: 10px;
+}
+
+button:hover {
+    cursor: pointer;
+    background: var(--hover-color);
+}
+
+p, td {
+    color: var(--text-color);
+}
+
+a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+a:hover {
+    text-decoration: none;
+    color: var(--title-color);
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+tr:hover {
+    cursor: pointer;
+    background-color: #f2f2f2;
+}
+
+th, td {
+    border-top: 1px solid #dddddd;
+    border-bottom: 1px solid #dddddd;
+    text-align: left;
+    padding: 20px 8px;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+ol, ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 20px;
+    list-style-type: none; /* Remove default numbering */
+    counter-reset: crypto-counter; /* Reset counter for ordered list */
+}
+
+ol li {
+    padding: 8px;
+    counter-increment: crypto-counter; /* Increment the counter for each list item */
+    margin-bottom: 10px; /* Adjust spacing between list items */
+}
+
+ol li::before {
+    content: counter(crypto-counter) ". "; /* Display the counter value with a period */
+    font-weight: bold; /* Make the counter numbers bold */
+    color: var(--text-color); /* Change the color of the counter numbers */
+    margin-right: 5px; /* Adjust spacing between counter numbers and list items */
+}
+
+footer {
+    margin-top: 30px;
+}
+
+.center-div, .footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

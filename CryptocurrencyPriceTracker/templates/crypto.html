@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cryptocurrency Price Tracker - {{ cryptocurrency.name }}</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+<header>
+    <h1>Cryptocurrency Price Tracker</h1>
+    <div>
+        <a href="/">Home</a>
+        <a href="/currencies">Currencies</a>
+    </div>
+</header>
+<section class="center-div">
+    <h1>Price of {{ cryptocurrency.name }}</h1>
+    <p><strong>Symbol:</strong> {{ cryptocurrency.symbol }}</p>
+    <p><strong>Current Price:</strong> ${{ "{:,.2f}".format(cryptocurrency.prices[-1]) }}</p>
+    <p><strong>Market Cap:</strong> ${{ "{:,.2f}".format(cryptocurrency.market_cap) }}</p>
+
+    <!-- Embedding the price graph -->
+    <img src="/plot/{{ cryptocurrency.name }}" alt="Price Graph" width="800" height="600">
+</section>
+<footer>
+    <div class="footer-content">
+        <p>Created by <strong>Yousef Sherif Crypto Tracker</strong>. &copy; 2024 Yousef Sherif. All rights reserved.</p>
+    </div>
+</footer>
+</body>
+</html>
